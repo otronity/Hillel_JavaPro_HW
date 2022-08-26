@@ -10,8 +10,9 @@ public class Employee {
     private String phone;
     private Integer age;
 
-    private String regexpPattern_email = "^(.+)@(\\S+)$";
-    private String regexpPattern_phone = "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{1,3}[- .]?\\d{1,4}$";
+    private static String regexpPattern_fio = "^[a-zA-Z]{2,100}[ ][a-zA-Z]{2,100}[ ][a-zA-Z]{2,100}$";
+    private static String regexpPattern_email = "^(.+)@(\\S+)$";
+    private static String regexpPattern_phone = "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{1,3}[- .]?\\d{1,4}$";
 
     public Employee (String FIO, String position, String email, String phone, Integer age){
         setFIO( FIO);
@@ -22,7 +23,8 @@ public class Employee {
     }
 
     public void setFIO(String FIO) {
-        this.FIO = FIO;
+        if (Pattern.compile(regexpPattern_fio).matcher(FIO).matches()) {this.FIO = FIO;}
+        else System.out.println("FIO is incorrect");
     }
 
     public String getFIO() { return FIO;}
