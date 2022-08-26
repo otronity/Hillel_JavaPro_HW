@@ -1,19 +1,24 @@
 package Employee;
 
+import java.util.regex.Pattern;
+
 public class Employee {
 
-    public String FIO;
-    public String position;
-    public String email;
-    public String phone;
-    public Integer age;
+    private String FIO;
+    private String position;
+    private String email;
+    private String phone;
+    private Integer age;
+
+    private String regexpPattern_email = "^(.+)@(\\S+)$";
+    private String regexpPattern_phone = "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{1,3}[- .]?\\d{1,4}$";
 
     public Employee (String FIO, String position, String email, String phone, Integer age){
-        this.FIO = FIO;
-        this.position = position;
-        this.email = email;
-        this.phone = phone;
-        this.age = age;
+        setFIO( FIO);
+        setPosition(position);
+        setEmail(email);
+        setPhone(phone);
+        setAge(age);
     }
 
     public void setFIO(String FIO) {
@@ -29,18 +34,22 @@ public class Employee {
     public String getPosition() { return position; }
 
     public void setEmail(String email) {
-        this.email = email;
+        if (Pattern.compile(regexpPattern_email).matcher(email).matches()) {this.email = email;}
+        else System.out.println("Email is incorrect");
     }
 
     public String getEmail() { return email;  }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        if (Pattern.compile(regexpPattern_phone).matcher(phone).matches()) {this.phone = phone;}
+        else System.out.println("Phone is incorrect");
     }
 
     public String getPhone() { return phone;}
 
-    public void setAge(Integer age) { this.age = age; }
+    public void setAge(Integer age) { if (age >= 18) {this.age = age;} else {
+        System.out.println("The Age is incorrect"); }
+    }
 
     public Integer getAge() { return age; }
 }
