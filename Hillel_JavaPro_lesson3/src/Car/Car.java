@@ -6,7 +6,7 @@ public class Car {
 
     private void startCommand(){ System.out.print("startCommand");}
 
-    private void StartFuelSystem(){  System.out.print("StartFuelSystem");}
+    private void StartFuelSystem(){ System.out.print("StartFuelSystem");}
 
     public void start(){
         startElectricity();

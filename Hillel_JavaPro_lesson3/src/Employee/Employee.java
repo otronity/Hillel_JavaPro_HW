@@ -1,11 +1,12 @@
 package Employee;
 
 public class Employee {
-    String FIO;
-    String position;
-    String email;
-    String phone;
-    Integer age;
+
+    public String FIO;
+    public String position;
+    public String email;
+    public String phone;
+    public Integer age;
 
     public Employee (String FIO, String position, String email, String phone, Integer age){
         this.FIO = FIO;
