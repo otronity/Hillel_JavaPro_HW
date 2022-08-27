@@ -10,10 +10,6 @@ public class Employee {
     private String phone;
     private Integer age;
 
-    private static String regexpPattern_fio = "^[a-zA-Z]{2,100}[ ][a-zA-Z]{2,100}[ ][a-zA-Z]{2,100}$";
-    private static String regexpPattern_email = "^(.+)@(\\S+)$";
-    private static String regexpPattern_phone = "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{1,3}[- .]?\\d{1,4}$";
-
     public Employee (String FIO, String position, String email, String phone, Integer age){
         setFIO( FIO);
         setPosition(position);
@@ -23,8 +19,7 @@ public class Employee {
     }
 
     public void setFIO(String FIO) {
-        if (Pattern.compile(regexpPattern_fio).matcher(FIO).matches()) {this.FIO = FIO;}
-        else System.out.println("FIO is incorrect");
+        this.FIO = FIO;
     }
 
     public String getFIO() { return FIO;}
@@ -36,22 +31,16 @@ public class Employee {
     public String getPosition() { return position; }
 
     public void setEmail(String email) {
-        if (Pattern.compile(regexpPattern_email).matcher(email).matches()) {this.email = email;}
-        else System.out.println("Email is incorrect");
+        this.email = email;
     }
 
     public String getEmail() { return email;  }
 
-    public void setPhone(String phone) {
-        if (Pattern.compile(regexpPattern_phone).matcher(phone).matches()) {this.phone = phone;}
-        else System.out.println("Phone is incorrect");
-    }
+    public void setPhone(String phone) { this.phone = phone;  }
 
     public String getPhone() { return phone;}
 
-    public void setAge(Integer age) { if (age >= 18) {this.age = age;} else {
-        System.out.println("The Age is incorrect"); }
-    }
+    public void setAge(Integer age) { this.age = age;  }
 
     public Integer getAge() { return age; }
 }
