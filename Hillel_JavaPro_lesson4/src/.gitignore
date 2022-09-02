@@ -1,0 +1,9 @@
+# Default ignored files
+/shelf/
+/.idea/workspace.xml
+
+# Idea Files
+*.idea
+
+# Git Files
+*.git
