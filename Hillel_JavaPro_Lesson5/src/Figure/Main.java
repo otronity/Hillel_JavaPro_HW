@@ -1,3 +1,5 @@
+package Figure;
+
 import Figure.Circle;
 import Figure.Figure;
 import Figure.Square;
