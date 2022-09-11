@@ -1,6 +1,6 @@
-package Figure;
+package Part1.Figure;
 
-import api.Squareable;
+import Part1.api.Squareable;
 
 public class Figure implements Squareable {
 

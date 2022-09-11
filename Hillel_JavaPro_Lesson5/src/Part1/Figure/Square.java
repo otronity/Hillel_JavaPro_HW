@@ -1,6 +1,8 @@
-package Figure;
+package Part1.Figure;
 
-public class Square extends Figure{
+import Part1.Figure.Figure;
+
+public class Square extends Figure {
 
     private double border;
 

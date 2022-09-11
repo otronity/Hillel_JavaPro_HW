@@ -1,9 +1,9 @@
-package Figure;
+package Part1;
 
-import Figure.Circle;
-import Figure.Figure;
-import Figure.Square;
-import Figure.Triangle;
+import Part1.Figure.Circle;
+import Part1.Figure.Figure;
+import Part1.Figure.Square;
+import Part1.Figure.Triangle;
 
 public class Main {
 

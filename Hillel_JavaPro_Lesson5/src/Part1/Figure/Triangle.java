@@ -1,6 +1,8 @@
-package Figure;
+package Part1.Figure;
 
-public class Triangle extends Figure{
+import Part1.Figure.Figure;
+
+public class Triangle extends Figure {
 
     private double a;
     private double b;
