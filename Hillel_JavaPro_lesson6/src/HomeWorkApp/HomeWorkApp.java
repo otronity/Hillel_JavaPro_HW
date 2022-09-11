@@ -11,15 +11,15 @@ public class HomeWorkApp {
         long a = 25;
         long b = -43;
         if (interval1(a, b)) System.out.println(a + " + " + b + " входит в интурвал [10,20]");
-        else System.out.println(a + " + " + b + " не входит в интурвал [10,20]");
-        interval2((long) -25);
+        if (!interval1(a, b)) System.out.println(a + " + " + b + " не входит в интурвал [10,20]");
+        interval2(-25);
         int c = -0;
         if (interval3((long) c)) System.out.println(c + " отрицательное");
-        else System.out.println(c + " положительное");
+        if (!interval3((long) c)) System.out.println(c + " положительное");
         printStr("Hello world!", 2);
         int year = 2022;
         if (checkYear(year)) System.out.println(year + " высокосный год");
-        else System.out.println(year + " не высокосный год");
+        if (!checkYear(year)) System.out.println(year + " не высокосный год");
 
     }
 
@@ -34,18 +34,18 @@ public class HomeWorkApp {
         int b = 1;
         if ((a + b) >= 0) {
             System.out.println("Сумма положительная (" + a + "+" + b + ")");
-        } else System.out.println("Сумма отрицательная (" + a + "+" + b + ")");
+        }
+        if ((a + b) < 0) System.out.println("Сумма отрицательная (" + a + "+" + b + ")");
     }
 
     public static void printColor() {
         int value = 8;
-        if (value <= 0) {
-            System.out.println("Красный");
-        } else if (value <= 100) {
-            System.out.println("Желтый");
-        } else {
-            System.out.println("Зеленый");
-        }
+        if (value <= 0) System.out.println("Красный");
+
+        if ((value > 0) && (value <= 100)) System.out.println("Желтый");
+
+        if (value > 100) System.out.println("Зеленый");
+
     }
 
     public static void compareNumbers() {
@@ -53,24 +53,20 @@ public class HomeWorkApp {
         int b = 1;
         System.out.print("a = " + a + ", b = " + b + " - ");
         if (a >= b) System.out.println("a >= b");
-        else System.out.println("a < b");
+        if (a < b) System.out.println("a < b");
     }
 
     public static boolean interval1(long a, long b) {
-        boolean result = false;
-        if (((a + b) >= 10) && ((a + b) <= 20)) result = true;
-        return result;
+        return (((a + b) >= 10) && ((a + b) <= 20));
     }
 
     public static void interval2(long a) {
         if (a >= 0) System.out.println("Число " + a + " положительное");
-        else System.out.println("Число " + a + " отрицательное");
+        if (a < 0) System.out.println("Число " + a + " отрицательное");
     }
 
     public static boolean interval3(long a) {
-        boolean result = false;
-        if (a < 0) result = true;
-        return result;
+        return (a < 0);
     }
 
     public static void printStr(String s, int iter) {
@@ -80,12 +76,7 @@ public class HomeWorkApp {
     }
 
     public static boolean checkYear(int year) {
-        boolean result = false;
-
-        if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {
-            result = true;
-        }
-        return result;
+        return (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0));
     }
 
 }
