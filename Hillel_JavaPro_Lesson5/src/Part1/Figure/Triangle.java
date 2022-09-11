@@ -1,7 +1,5 @@
 package Part1.Figure;
 
-import Part1.Figure.Figure;
-
 public class Triangle extends Figure {
 
     private double a;
