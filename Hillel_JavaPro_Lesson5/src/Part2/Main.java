@@ -1,12 +1,12 @@
-package Part2;
+package part2;
 
-import Part2.Barrier.Barrier;
-import Part2.Barrier.Track;
-import Part2.Barrier.Wall;
-import Part2.Member.Cat;
-import Part2.Member.Human;
-import Part2.Member.Member;
-import Part2.Member.Robot;
+import part2.barrier.Barrier;
+import part2.barrier.Track;
+import part2.barrier.Wall;
+import part2.member.Cat;
+import part2.member.Human;
+import part2.member.Member;
+import part2.member.Robot;
 
 public class Main {
 

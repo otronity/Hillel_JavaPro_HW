@@ -1,4 +1,4 @@
-package Part1.Figure;
+package part1.figure;
 
 public class Triangle extends Figure {
 

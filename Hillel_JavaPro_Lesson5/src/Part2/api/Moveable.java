@@ -1,6 +1,6 @@
-package Part2.api;
+package part2.api;
 
-import Part2.Barrier.Barrier;
+import part2.barrier.Barrier;
 
 public interface Moveable {
 

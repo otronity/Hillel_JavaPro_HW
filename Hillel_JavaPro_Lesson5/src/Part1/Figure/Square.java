@@ -1,6 +1,4 @@
-package Part1.Figure;
-
-import Part1.Figure.Figure;
+package part1.figure;
 
 public class Square extends Figure {
 

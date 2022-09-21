@@ -1,7 +1,7 @@
-package Part2.Barrier;
+package part2.barrier;
 
-import Part2.Member.Member;
-import Part2.api.Overcomable;
+import part2.member.Member;
+import part2.api.Overcomable;
 
 public class Barrier implements Overcomable {
 

@@ -1,6 +1,6 @@
-package Part2.api;
+package part2.api;
 
-import Part2.Member.Member;
+import part2.member.Member;
 
 public interface Overcomable {
 

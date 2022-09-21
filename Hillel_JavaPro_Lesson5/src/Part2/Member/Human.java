@@ -1,6 +1,6 @@
-package Part2.Member;
+package part2.member;
 
-import Part2.Barrier.Barrier;
+import part2.barrier.Barrier;
 
 public class Human extends Member {
 

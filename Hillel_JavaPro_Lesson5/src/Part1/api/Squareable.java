@@ -1,4 +1,4 @@
-package Part1.api;
+package part1.api;
 
 public interface Squareable {
 

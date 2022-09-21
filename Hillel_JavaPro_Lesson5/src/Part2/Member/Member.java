@@ -1,7 +1,7 @@
-package Part2.Member;
+package part2.member;
 
-import Part2.Barrier.Barrier;
-import Part2.api.Moveable;
+import part2.barrier.Barrier;
+import part2.api.Moveable;
 
 public class Member implements Moveable {
 

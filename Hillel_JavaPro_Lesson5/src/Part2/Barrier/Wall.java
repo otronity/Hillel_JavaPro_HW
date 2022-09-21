@@ -1,6 +1,6 @@
-package Part2.Barrier;
+package part2.barrier;
 
-import Part2.Member.Member;
+import part2.member.Member;
 
 public class Wall extends Barrier {
 
