@@ -5,7 +5,7 @@ public class TestString {
     public static void main(String[] args) {
         findSymbolOccurance("hello", 'l');
         findWordPosition("AApollo", "pollo");
-        stringReverse("hello");
+        stringReverse(null);
         isPalindrome("ere");
         isPalindrome("Are");
 
@@ -14,29 +14,41 @@ public class TestString {
     }
 
     public static void findSymbolOccurance(String s, char c) {
-        char chs[] = s.toCharArray();
-        int cnt = 0;
-        for (int i = 0; i < chs.length; i++) {
-            if (chs[i] == c) cnt++;
+        if (s != null) {
+            char chs[] = s.toCharArray();
+            int cnt = 0;
+            for (int i = 0; i < chs.length; i++) {
+                if (chs[i] == c) cnt++;
+            }
+            System.out.println("Символ '" + c + "' в рвдку '" + s + "' зустрічається " + cnt + " раз");
+        } else {
+            System.out.println("findSymbolOccurance - Передана порожня строка!");
         }
-        System.out.println("Символ '" + c + "' в рвдку '" + s + "' зустрічається " + cnt + " раз");
     }
 
     public static void findWordPosition(String source, String target) {
-        System.out.print("Позиція підрядка '" + target + "' в рядку '" + source + "' : ");
-        if (source.contains(target)) {
-            System.out.println(source.indexOf(target));
-        } else System.out.println(-1);
-
+        if (source != null) {
+            System.out.println("Позиція підрядка '" + target + "' в рядку '" + source + "' : " + source.indexOf(target));
+        } else {
+            System.out.println("findWordPosition - Передана порожня строка!");
+        }
     }
 
     public static void stringReverse(String str) {
-        System.out.println("Reverse string " + str + " : " + new StringBuilder(str).reverse().toString());
+        if (str != null) {
+            System.out.println("Reverse string " + str + " : " + new StringBuilder(str).reverse().toString());
+        } else {
+            System.out.println("stringReverse - Передана порожня строка!");
+        }
     }
 
     public static void isPalindrome(String str) {
-        String reversStr = new StringBuilder(str).reverse().toString();
-        System.out.println(str + " -> " + str.equals(reversStr));
+        if (str != null) {
+            String reversStr = new StringBuilder(str).reverse().toString();
+            System.out.println(str + " -> " + str.equals(reversStr));
+        } else {
+            System.out.println("isPalindrome - Передана порожня строка!");
+        }
     }
 
     public static void guessWord() {
@@ -70,10 +82,13 @@ public class TestString {
                 for (int ii = 0; ii < n; ii++) {
                     if (str.charAt(ii) == wordRandom.charAt(ii)) {
                         strCatch = strCatch.concat(String.valueOf(str.charAt(ii)));
-                    } else strCatch = strCatch.concat("*");
+                    } else {
+                        strCatch = strCatch.concat("*");
+                    }
                 }
-                if (strCatch.length() < 15)
+                if (strCatch.length() < 15) {
                     strCatch = strCatch.concat("***************".substring(0, 15 - strCatch.length()));
+                }
                 System.out.println("співпадіння букв у словах " + strCatch);
             }
             if (str.equals(wordRandom)) {
