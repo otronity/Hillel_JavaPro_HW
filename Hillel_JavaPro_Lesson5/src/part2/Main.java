@@ -3,8 +3,13 @@ package part2;
 import part2.barrier.Barrier;
 import part2.barrier.Track;
 import part2.barrier.Wall;
+<<<<<<< HEAD:Hillel_JavaPro_Lesson5/src/Part2/Main.java
+import part2.member.Human;
+import part2.member.Cat;
+=======
 import part2.member.Cat;
 import part2.member.Human;
+>>>>>>> 12897fc (rename packages):Hillel_JavaPro_Lesson5/src/part2/Main.java
 import part2.member.Member;
 import part2.member.Robot;
 
