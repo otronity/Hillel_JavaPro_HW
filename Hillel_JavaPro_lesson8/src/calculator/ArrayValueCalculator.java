@@ -13,7 +13,7 @@ public class ArrayValueCalculator {
                 {"2", "2", "3", "4"}
         };
         try {
-            doCal(arr);
+            doCalc(arr);
         } catch (ArraySizeException ase) {
             System.out.println("ArraySizeException: " + ase.getMessage());
         } catch (ArrayDataException ade) {
@@ -24,7 +24,7 @@ public class ArrayValueCalculator {
         }
     }
 
-    public static void doCal(String[][] arr) throws ArraySizeException, ArrayDataException {
+    public static void doCalc(String[][] arr) throws ArraySizeException, ArrayDataException {
         int sum = 0;
         if (arr.length != 4) {
             throw new ArraySizeException("Масив має некоректний розмір");
