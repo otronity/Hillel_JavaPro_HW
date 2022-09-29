@@ -77,9 +77,7 @@ public class FileLoggerConfiguration {
     public String getDateTimeNow() {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy_hh;mm");
-        String formatDateNow = now.format(formatter);
-
-        return formatDateNow;
+        return now.format(formatter);
     }
 
     public String getFilePath() {

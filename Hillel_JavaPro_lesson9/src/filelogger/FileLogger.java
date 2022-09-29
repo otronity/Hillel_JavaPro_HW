@@ -69,16 +69,14 @@ public class FileLogger {
                 }
             }
         } else {
-            throw new FileNotFoundException("Файл " + file + " не знайдено");
+            throw new FileNotFoundException("Файл не знайдено");
         }
     }
 
     public String getDateTimeNow() {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd hh:mm:ss");
-        String formatDateNow = now.format(formatter);
-
-        return formatDateNow;
+        return now.format(formatter);
     }
 
 }
