@@ -21,12 +21,14 @@ public class FileLoggerConfiguration {
     String template;
 
     static String filePrefix;
+    final static String urlConfig= ".\\src\\resouces\\config.properties";
+    static int numfile = 1;
 
     public FileLoggerConfiguration() {
     }
 
-    public void load(String fileProps) {
-        try (InputStream input = new FileInputStream(fileProps)) {
+    public void load() {
+        try (InputStream input = new FileInputStream(urlConfig)) {
 
             Properties prop = new Properties();
             prop.load(input);
@@ -37,7 +39,7 @@ public class FileLoggerConfiguration {
             this.template = prop.getProperty("template", "%s | %s | Message: %s");
             filePrefix = prop.getProperty("FileName", "log") + "_";
             this.fileFormat = prop.getProperty("FileFormat", ".txt");
-            this.fileName = filePrefix + getDateTimeNow() + fileFormat;
+            this.fileName = filePrefix + getDateTimeNow() + "_" + numfile + fileFormat;
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -49,7 +51,8 @@ public class FileLoggerConfiguration {
         try {
             if (!fileLog.createNewFile()) {
                 if (getFileSize() > fileMaxSize) {
-                    fileName = filePrefix + getDateTimeNow() + fileFormat;
+                    numfile ++;
+                    fileName = filePrefix + getDateTimeNow() + "_" + numfile + fileFormat;
                     File fileLognew = new File(filePath + fileName);
                     if (fileLognew.createNewFile()) {
                         System.out.println("Create new File " + fileName);
@@ -76,7 +79,7 @@ public class FileLoggerConfiguration {
 
     public String getDateTimeNow() {
         LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy_hh;mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy_hh;mm;ss");
         return now.format(formatter);
     }
 
@@ -106,10 +109,6 @@ public class FileLoggerConfiguration {
 
     public String getTemplate() {
         return template;
-    }
-
-    public void setTemplate(String template) {
-        this.template = template;
     }
 
     public void setFileName(String fileName) {
