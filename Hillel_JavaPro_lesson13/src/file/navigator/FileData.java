@@ -1,5 +1,7 @@
 package file.navigator;
 
+import java.util.Objects;
+
 public class FileData {
 
     String path;
@@ -29,5 +31,18 @@ public class FileData {
         if(f1.getSize() < f2.getSize())
             return -1;
         return 1;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FileData fileData = (FileData) o;
+        return getPath().equals(fileData.getPath()) && getFilename().equals(fileData.getFilename());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getPath(), getFilename());
     }
 }
