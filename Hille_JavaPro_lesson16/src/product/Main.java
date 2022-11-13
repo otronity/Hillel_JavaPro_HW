@@ -1,8 +1,6 @@
 package product;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Year;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -13,9 +11,9 @@ public class Main {
         List<Product> lp = new ArrayList<>();
 
         lp.add(new Product("Book", 200, true));
-        lp.add(new Product("Book", 250, false));
+        lp.add(new Product("Book", 260, false));
         lp.add(new Product("Book", 30, true));
-        lp.add(new Product("Book", 120, true));
+        lp.add(new Product("Book", 320, true));
         lp.add(new Product("Book", 60, false));
         lp.add(new Product("Toy", 70, true));
         lp.add(new Product("Toy", 2000, true));
@@ -31,14 +29,14 @@ public class Main {
 
     }
 
-    //метод получения всех продуктов в виде списка, категория которых эквивалентна “Book” и цена более чем 250.
+    //метод получения всех продуктов в виде списка, категория которых эквивалентна “Book”
+    // и цена более чем 250.
     public static void getBooks(List<Product> pl, String prodType, double maxprice) {
         if (!prodType.isEmpty()) {
-            if (pl.stream().filter(product -> prodType.equals(product.getType()))
-                    .findAny().isPresent()) {
-                System.out.println("Список продуктів " + prodType + " і ціною більше 250:");
+            if (pl.stream().anyMatch(product -> prodType.equals(product.getType()))) {
+                System.out.println("Список продуктів " + prodType + " і ціною більше " + maxprice + ":");
                 List<Product> products = pl.stream().filter(product -> prodType.equals(product.getType()))
-                        .filter(product -> 250 <= product.getPrice())
+                        .filter(product -> maxprice < product.getPrice())
                         .collect(Collectors.toList());
                 printList(products);
             } else {
@@ -52,11 +50,10 @@ public class Main {
      Так если Продукт A был с ценой 1.0 USD, то его финальная цена будет оставлять 0.9 USD*/
     public static void productdiscount(List<Product> pl, String prodType, int discount) {
         if (!prodType.isEmpty()) {
-            if (pl.stream().filter(product -> prodType.equals(product.getType()))
-                    .findAny().isPresent()) {
+            if (pl.stream().anyMatch(product -> prodType.equals(product.getType()))) {
                 System.out.println("Список продуктів " + prodType + " зі знижкою " + discount + ":");
                 List<Product> products = pl.stream().filter(product -> prodType.equals(product.getType()))
-                        .filter(product -> product.isDiscount())
+                        .filter(Product::isDiscount)
                         .collect(Collectors.toList());
                 products.stream().forEach(product -> product.setPrice(product.getPrice() * (100 - discount) / 100));
 
@@ -70,8 +67,7 @@ public class Main {
     //    Реализовать метод получения самого дешевого продукта из категории “Book”
     public static void minPrice(List<Product> pl, String prodType) {
         if (!prodType.isEmpty()) {
-            if (pl.stream().filter(product -> prodType.equals(product.getType()))
-                    .findAny().isPresent()) {
+            if (pl.stream().anyMatch(product -> prodType.equals(product.getType()))) {
                 double minp = pl.stream().filter(product -> prodType.equals(product.getType()))
                         .min(Product::compare).get().getPrice();
                 Product p = pl.stream().filter(product -> prodType.equals(product.getType()))
@@ -87,7 +83,7 @@ public class Main {
     public static void getLastAdd(List<Product> pl) {
         if (pl.stream().findAny().isPresent()) {
             System.out.println("Останні 3 додані продукти:");
-            List<Product> p = pl.stream().sorted((p1, p2) -> Product.compareByDate(p1, p2))
+            List<Product> p = pl.stream().sorted(Product::compareByDate)
                     .collect(Collectors.toList()).subList(0, 3);
             printList(p);
         } else {
@@ -107,7 +103,7 @@ public class Main {
             double sumAll = pl.stream().filter(product -> prodType.equals(product.getType()))
                     .filter(product -> LocalDateTime.now().getYear() == product.getDateAdd().getYear())
                     .filter(product -> product.getPrice() <= 75)
-                    .mapToDouble(value -> value.getPrice()).sum();
+                    .mapToDouble(Product::getPrice).sum();
 
             System.out.println("Загальна вартість продуктів типу" + prodType +
                     " додані протягом поточного року, з ціною не вище 75: " + sumAll);
