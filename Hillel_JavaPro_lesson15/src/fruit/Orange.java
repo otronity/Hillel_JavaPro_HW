@@ -3,7 +3,11 @@ package fruit;
 public class Orange extends Fruit{
 
     private final String name = "orange";
-    private final float weight = 1.5f;
+    float weight;
+
+    public Orange(float w) {
+        this.weight = w;
+    }
 
     public String getName() {
         return name;

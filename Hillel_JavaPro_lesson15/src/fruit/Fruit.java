@@ -3,7 +3,14 @@ package fruit;
 public abstract class Fruit {
 
     private final String name = "Fruit";
-    private final float weight = 0.1f;
+    float weight;
+
+    public Fruit(float w) {
+        this.weight = w;
+    }
+
+    protected Fruit() {
+    }
 
     public String getName() {
         return name;
