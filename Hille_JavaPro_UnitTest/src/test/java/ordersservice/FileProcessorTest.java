@@ -1,7 +1,6 @@
 package ordersservice;
 
 import orderservice.DataProcessor;
-import orderservice.FileProcessor;
 import orderservice.Order;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -9,10 +8,10 @@ import org.mockito.Mockito;
 
 import java.util.*;
 
-public class FileProcessorTest {
+class FileProcessorTest {
 
     @Test
-    public void checkDataToFile(){
+    void checkDataToFile(){
         Order order1 = new Order("АТБ", "Гречка", 30.25d, 1);
         Order order2 = new Order("АТБ", "Гречка", 32.25d, 2);
         Order order3 = new Order("АТБ", "Сахар", 21.25d, 10);
