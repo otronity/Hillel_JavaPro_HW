@@ -34,10 +34,8 @@ public class FileProcessorTest {
         DataProcessor mock = Mockito.mock(DataProcessor.class);
 
         Mockito.when(mock.getDataByStore(entry)).thenCallRealMethod();
-        Mockito.when(mock.getSum("Сахар", entry.getValue())).thenReturn("3");
-        Mockito.when(mock.getSum("Гречка", entry.getValue())).thenReturn("3");
-        Mockito.when(mock.getAVG("Сахар", entry.getValue())).thenReturn("1");
-        Mockito.when(mock.getAVG("Гречка", entry.getValue())).thenReturn("1");
+        Mockito.when(mock.getSum(Mockito.anyString(), Mockito.anyList())).thenReturn("3");
+        Mockito.when(mock.getAVG(Mockito.anyString(), Mockito.anyList())).thenReturn("1");
 
         List<String> ls = mock.getDataByStore(entry);
         Assertions.assertEquals(dataFileList, ls, "Результат проверки негативный");
