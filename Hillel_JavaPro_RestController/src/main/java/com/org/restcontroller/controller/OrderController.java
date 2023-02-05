@@ -13,12 +13,6 @@ import java.util.List;
 public class OrderController {
 
     @Autowired
-    private Order order1;
-    @Autowired
-    private Order order2;
-    @Autowired
-    private Order order3;
-    @Autowired
     private OrderRepository orderRep;
 
     @GetMapping("/allorders")

@@ -1,6 +1,7 @@
 package com.org.restcontroller;
 
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -10,12 +11,13 @@ import java.util.List;
 @Getter
 public class Order {
 
-    private int id;
-    private LocalDateTime date;
-    private Long cost;
-    private List<Product> products;
+    private final int id;
+    private final LocalDateTime date;
+    private final Long cost;
+    private final List<Product> products;
     private static int maxId = 0;
 
+    @Autowired
     public Order(List<Product> products) {
         maxId++;
         this.id = maxId;
