@@ -23,8 +23,8 @@ public class FileProcessorTest {
         orderList.add(order3);
 
         List<String> dataFileList = new ArrayList<>();
-        dataFileList.add("Сахар;21,25;10;\n");
-        dataFileList.add("Гречка;31,58;3;\n");
+        dataFileList.add("Сахар;1;3;\n");
+        dataFileList.add("Гречка;1;3;\n");
 
         Map<String, List<Order>> map = new HashMap<>();
         map.put("АТБ", orderList);
@@ -32,10 +32,14 @@ public class FileProcessorTest {
         Map.Entry<String, List<Order>> entry = map.entrySet().iterator().next();
 
         DataProcessor mock = Mockito.mock(DataProcessor.class);
-        Mockito.when(mock.getDataByStore(entry)).thenReturn(dataFileList);
 
-        FileProcessor fileProcessor = new FileProcessor();
-        List<String> ls = fileProcessor.getDataToFile(entry);
+        Mockito.when(mock.getDataByStore(entry)).thenCallRealMethod();
+        Mockito.when(mock.getSum("Сахар", entry.getValue())).thenReturn("3");
+        Mockito.when(mock.getSum("Гречка", entry.getValue())).thenReturn("3");
+        Mockito.when(mock.getAVG("Сахар", entry.getValue())).thenReturn("1");
+        Mockito.when(mock.getAVG("Гречка", entry.getValue())).thenReturn("1");
+
+        List<String> ls = mock.getDataByStore(entry);
         Assertions.assertEquals(dataFileList, ls, "Результат проверки негативный");
     }
 }

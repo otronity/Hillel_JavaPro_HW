@@ -52,10 +52,6 @@ public class FileProcessor {
                 .collect(Collectors.groupingBy(Order::getShopName));
     }
 
-    public static List<String> getDataToFile(Map.Entry<String, List<Order>> entry){
-        return dataProcessor.getDataByStore(entry);
-    }
-
     public static void writeDataToFile() {
         // магазины со списком заказов по нему
         Map<String, List<Order>> mapbyShop = getMapStore(listOrders);
@@ -63,7 +59,7 @@ public class FileProcessor {
         Iterator<Map.Entry<String, List<Order>>> iterator = mapbyShop.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<String, List<Order>> entry = iterator.next();
-            writeFile(entry.getKey(), getDataToFile(entry));
+            writeFile(entry.getKey(), dataProcessor.getDataByStore(entry));
         }
     }
 
