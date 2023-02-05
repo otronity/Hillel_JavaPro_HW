@@ -32,5 +32,4 @@ public class ProductConfig {
     @Scope("prototype")
     public Cart cart(){return new Cart(new ArrayList<Product>());}
 
-
 }

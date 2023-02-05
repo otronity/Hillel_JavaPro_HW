@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 @org.springframework.boot.autoconfigure.SpringBootApplication
 public class SpringBootApplication {
-
     @Autowired
     private ProductRepository prodRep;
     @Autowired
