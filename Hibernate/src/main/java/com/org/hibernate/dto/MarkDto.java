@@ -1,0 +1,14 @@
+package com.org.hibernate.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class MarkDto {
+
+    private String discipline;
+    private Integer value;
+}
