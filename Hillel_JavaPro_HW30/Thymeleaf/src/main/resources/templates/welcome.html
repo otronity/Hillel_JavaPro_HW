@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title th:text="#{app.welcome.title}">Thymeleaf Demo</title>
+</head>
+
+<body style="background: linear-gradient(deepskyblue, yellow)">
+
+<table>
+  <tr>
+    <td>
+      <div th:insert="~{fragments/header :: header}"></div>
+    </td>
+    <td>
+      <div style="background-color: cornflowerblue">
+        <h1 th:text="#{app.welcome.welcome_btn}">
+        </h1>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div th:insert="~{fragments/menu :: menu}"></div>
+    </td>
+    <td>
+      <div style="background-color: cornflowerblue; text-size-adjust: auto">
+        <h1 th:text="#{app.welcome.welcome_btn}">
+        </h1>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<div th:insert="~{fragments/footer :: footer}"></div>
+
+</body>
+
+</html>
